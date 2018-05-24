@@ -1,0 +1,53 @@
+
+<dom-module id="vermin-footer">
+ <!-- Defines the element's style and local DOM -->
+  <template>
+    <style>
+      :host {
+        display: flex;
+        flex-direction: row;
+        color: white;
+        width: 100%;
+        background-color: black;
+        margin: 0px;
+        padding: 1px;
+        height: 140px;
+          
+      }
+      p {
+        font-size: 10px;
+        margin: 0 auto;
+        margin-top: 75px;
+      }
+    
+      a {
+        float: right;
+        text-decoration: none;
+      }
+      
+      h1 {
+        border-style: solid;
+        border-color: red;
+      }
+       @media only screen and (max-width: 1550px) {
+         p {
+           font-size: 16px;
+         }
+       }
+    </style>
+    
+    <p>This is a fan made site and is not officially associated with FatShark studio. 
+    If you have a comment or see a mistake on the website, please email name@gmail.com.
+    This site was last updated: 1/12/2000
+    </p>
+   
+  </template>
+  <script>
+    // Your new element extends the Polymer.Element base class
+    class VerminFooter extends Polymer.Element {
+      static get is() { return 'vermin-footer'; }
+    }
+    //Now, register your new custom element so the browser can use it
+    customElements.define(VerminFooter.is, VerminFooter);
+  </script>
+</dom-module>

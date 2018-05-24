@@ -1,0 +1,85 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+
+
+<link rel="import" href="../global/vermin-header.html">
+<link rel="import" href="../global/vermin-footer.html">
+
+
+
+<link rel="import" href="vermin-enemies.html">
+
+<link rel="import" href="vermin-grims-tomes/vermin-grims-tomes.html">
+
+<link rel="import" href="vermin-grims-tomes/tome-grim-template.html">
+
+<link rel="import" href="vermin-weapons/vermin-weapons.html">
+
+<dom-module id="vermintide2-info">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding: 0px;
+        background-color: #343434;
+      }
+      vermin-footer {
+        padding-top: 150px;
+      }
+      vermint-header {
+        padding-bottom: 10px;
+      }
+   
+      
+    </style>
+    
+    <!-- app-location binds to the app's URL -->
+    <app-location route="{{route}}" path=""></app-location>
+  
+  <!-- this app-route manages the top-level routes -->
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"
+        ></app-route>
+  
+    <vermin-header></vermin-header>
+  
+    <vermin-tomes></vermin-tomes>
+  
+        <!-- iron-pages selects the view based on the active route -->
+    <iron-pages selected="[[routeData.page]]" attr-for-selected="name" fallback-selection="weapons">
+      
+      <tome-grim-template name="tome-grim-template" route=""></tome-grim-template>
+      
+      <vermin-enemies name="enemies" route=""></vermin-enemies>
+      
+      <vermin-weapons name="weapons" route="{{subroute}}"></vermin-weapons>
+      
+      <vermin-grims-tomes name="grims-and-tomes" route=""></vermin-grims-tomes>
+    </iron-pages>
+    <vermin-footer></vermin-footer>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class Vermintide2Info extends Polymer.Element {
+      static get is() { return 'vermintide2-info'; }
+      static get properties() {
+        return {
+          subroute: Object
+        };
+      }
+    }
+
+    window.customElements.define(Vermintide2Info.is, Vermintide2Info);
+  </script>
+</dom-module>

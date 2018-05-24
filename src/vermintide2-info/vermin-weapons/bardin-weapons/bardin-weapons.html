@@ -1,0 +1,166 @@
+<!-- Load the Polymer.Element base class -->
+<link rel="import" href="../../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="bardin-weapons">
+  <!-- Defines the element's style and local DOM -->
+  <template>
+    <style>
+      :host {
+        
+      }
+      .top-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border-style: double;
+        border-top: 0px;
+        border-right: 0px;
+        border-left: 0px;
+        border-color: black;
+        font-size: 2em;
+      }
+      
+      h2 {
+        margin-left: 5%;
+        margin-bottom: 1%;
+        margin-top: 2%;
+        font-size: 3em;
+        font-style: oblique;     
+        }
+
+      .weapon-ranged {
+        margin-top: 2%;
+        border-style: double;
+        border-right: 0px;
+        border-bottom: 0px;
+        border-left: 0px;
+        border-color: black;
+      }
+      .icon-group {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        padding-left: 5%;
+        padding-right: 5%;
+        display: grid;
+        grid-gap: 60px 60px;
+        grid-template-columns: 260px 260px 260px 260px ;
+        grid-template-rows: 260px 260px;
+      }
+      .icon { 
+         position: relative;
+         display: block;
+         text-align: center;
+         transition: box-shadow 0.5s;
+         border-radius: 20px;
+      }
+      .icon:hover {
+        box-shadow:  1px 0px 25px 0px black;
+        transition: box-shadow 0.5s;
+      }
+     .icon:hover h3 {
+        color: #A41D2F;
+        transition: color 0.5s;
+      }
+      .icon h3 {
+        color: white;
+        transition: color 0.5s;
+      }
+      h3 { 
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin: 0;
+        padding: 4px;
+        text-shadow: -1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000,  1px 1px 0 #000;
+      }
+      img {
+        height: 100%;
+        width: 100%;
+        border-radius: inherit;
+       
+      }
+    
+    </style>
+       <div class="top-title">
+    <h1>Bardin Goreksson's weapons</h1>
+     </div>
+     <div class="weapon-melee">
+      
+     <h2>Melee</h2> 
+     
+     <div class="icon-group">
+        
+        <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Great Axe</h3>
+      </div>
+    
+    <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Two-Handed Hammer</h3>
+      </div>
+    
+    <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Axe</h3>
+      </div>
+    
+    <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Hammer</h3>
+      </div>
+    
+    <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Axe and Shield</h3>
+      </div>
+    
+    <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Hammer and Shield</h3>
+      </div>
+    
+    <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Pick</h3>
+      </div>
+    
+     </div>
+     </div>
+     <div class="weapon-ranged">
+     
+     <h2 >Ranged</h2>
+     <div class="icon-group">
+     
+     <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Crossbow</h3>
+      </div>
+      
+      <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Handgun</h3>
+      </div>
+      
+      <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Grudge-Raker</h3>
+      </div>
+      
+      <div class="icon">
+     <img src$="[[importPath]]test sword.png" alt"sword">
+     <h3>Drakefire Pistols</h3>
+      </div>
+     
+     </div>
+     </div>
+  </template>
+  <script>
+    // Your new element extends the Polymer.Element base class
+    class BardinWeapons extends Polymer.Element {
+      static get is() { return 'bardin-weapons'; }
+    }
+    //Now, register your new custom element so the browser can use it
+    customElements.define(BardinWeapons.is, BardinWeapons);
+  </script>
+</dom-module>

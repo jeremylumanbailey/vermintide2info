@@ -1,0 +1,67 @@
+<dom-module id="vermin-header">
+ <!-- Defines the element's style and local DOM -->
+  <template>
+    <style>
+      :host {
+        display: flex;
+        flex-direction: row;
+        color: white;
+        width: 100%;
+        background-color: black;
+        margin: 0px;
+        padding: 1px;
+        height: 140px;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        padding: 1em;
+        
+      }
+      .imgs {
+         border: 2px;
+      }
+      nav {
+     
+       padding: 3em 1em 1em 1em;
+       color: white;
+       /* margin-left: 55em; */
+       justify-content: flex-end;
+      }
+      nav a {
+        color: #FFFFFF;
+        transition: color 0.5s;
+      }
+      nav a:hover {
+        color: #ffd79a;
+        transition: color 0.4s;
+      }
+
+    </style>
+
+    
+    <a>
+      <!-- two images in an anchor, WAT -->
+      <img src$="[[importPath]]vermin_logo_text.png" alt="vewrmin logo" height="100" width="150">
+    </a>
+    
+    <nav>
+      <a href="/weapons">Weapons</a>
+      <a href="/enemies">Enemies</a>
+      <a href="/grims-and-tomes">Grims & Tomes</a>
+      <a href="/tome-grim-template">tome template</a>
+    </nav>
+    
+ 
+       
+       
+  </template>
+  <script>
+    // Your new element extends the Polymer.Element base class
+    class VerminHeader extends Polymer.Element {
+      static get is() { return 'vermin-header'; }
+    }
+    //Now, register your new custom element so the browser can use it
+    customElements.define(VerminHeader.is, VerminHeader);
+  </script>
+</dom-module>

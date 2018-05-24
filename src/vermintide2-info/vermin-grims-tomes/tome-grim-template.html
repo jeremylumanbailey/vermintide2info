@@ -1,0 +1,99 @@
+
+<link rel="import" href="../../../bower_components/iron-collapse/iron-collapse.html">
+
+<dom-module id="tome-grim-template">
+  <template>
+      <style>
+          
+          
+      :host {
+        display: block;
+
+        padding: 16px;
+      }
+     
+     
+     .rotate {
+   -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+     transform: rotate(90deg);
+     transition: transform 0.5s;
+      }
+
+      .normal {
+       -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+         transform: rotate(0deg);
+         transition: transform 0.5s;
+      }
+     
+   
+          
+      </style>
+    
+    <p> this is text from the template</p>
+    
+      <button id="button" on-click="toggle">
+  
+   
+   <img class$="[[arrow]]" src$="[[importPath]]chevron-right.svg" alt="vewrmin logo" height="20" width="20">
+  
+  [[BtnText]]
+  
+  </button>
+
+     <iron-collapse id="collapse">
+  <div>
+    
+    <iframe 
+   
+    width="560" height="315" src=[[vidPath]] frameborder="0" allow="autoplay; encrypted-media" allowfullscreen
+    frameborder="0"
+        style="border: solid 4px #37474F"
+    ></iframe>
+      
+     
+       
+      </div>
+</iron-collapse>
+    
+  </template>
+  <script>
+    class TomeGrimTemplate extends Polymer.Element {
+      static get is() { return 'tome-grim-template'; }
+      static get properties() {
+        return {
+          arrow: {
+            type: String,
+            value: "normal"
+        },
+          BtnText: {
+            type: String,
+            value: "i am defualt"
+          },
+          vidPath: {
+            type: String,
+            value: "https://www.youtube.com/embed/_2nnww4fk9I?rel=0"
+          }
+      }
+      }   
+      
+    toggle() {
+  //Expands iron-collapse
+  this.$.collapse.toggle();
+  this.$.button.setAttribute('aria-expanded', this.$.collapse.opened);
+  
+  //Changes arrow direction
+  if (this.arrow == "normal") {
+      this.arrow = "rotate";
+    }
+    else {
+      this.arrow = "normal";
+        }
+      }
+      
+    }
+    
+    window.customElements.define(TomeGrimTemplate.is, TomeGrimTemplate);
+  </script>
+</dom-module>

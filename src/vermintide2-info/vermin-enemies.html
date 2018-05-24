@@ -1,0 +1,103 @@
+<!-- Load the Polymer.Element base class -->
+<link rel="import" href="../../../bower_components/iron-collapse/iron-collapse.html">
+
+
+<dom-module id="vermin-enemies">
+  <!-- Defines the element's style and local DOM -->
+  <template>
+    <style>
+      :host {
+        display: block;
+
+        padding: 16px;
+      }
+     
+     
+     .rotate {
+   -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+     transform: rotate(90deg);
+     transition: transform 0.5s;
+      }
+
+      .normal {
+       -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+         transform: rotate(0deg);
+         transition: transform 0.5s;
+      }
+      
+    </style>
+
+    <h1>vermin-enemies.html </h1>
+     
+    
+    
+      <p>hello there</p>
+     
+     
+
+
+<button id="button" on-click="toggle">
+  
+   
+   <img class$="{{arrow}}" src$="[[importPath]]chevron-right.svg" alt="vewrmin logo" height="20" width="20">
+  
+  
+  Tome 1
+  
+  </button>
+
+     <iron-collapse id="collapse">
+  <div>Content goes here...
+  
+  <video width="320" height="240" controls>
+    <source src="[[importPath]]video.mp4" type="video/mp4">
+    
+      Your browser does not support the video tag.
+      </video>
+       
+      </div>
+</iron-collapse>
+
+
+<p>test</p>
+
+<vermin-grim-template></vermin-grim-template>
+    
+  </template>
+  <script>
+    // Your new element extends the Polymer.Element base class
+    class VerminEnemies extends Polymer.Element {
+      static get is() { return 'vermin-enemies'; }
+      static get properties() {
+        return {
+          
+          arrow: {
+            type: String,
+            value: "normal"
+          }
+
+        }
+      }
+      toggle() {
+  //Expands iron-collapse
+  this.$.collapse.toggle();
+  this.$.button.setAttribute('aria-expanded', this.$.collapse.opened);
+  //Changes arrow direction
+
+  if (this.arrow == "normal") {
+      this.arrow = "rotate";
+    }
+    else {
+      this.arrow = "normal";
+        }
+      }
+    }
+     
+    
+    
+    //Now, register your new custom element so the browser can use it
+    customElements.define(VerminEnemies.is, VerminEnemies);
+  </script>
+</dom-module>

@@ -1,0 +1,166 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../../bower_components/iron-pages/iron-pages.html">
+
+<link rel="import" href="sienna-weapons/sienna-weapons.html">
+<link rel="import" href="victor-weapons/victor-weapons.html">
+<link rel="import" href="markus-weapons/markus-weapons.html">
+<link rel="import" href="kerillian-weapons/kerillian-weapons.html">
+<link rel="import" href="bardin-weapons/bardin-weapons.html">
+
+<dom-module id="vermin-weapons">
+  <!-- Defines the element's style and local DOM -->
+  <template>
+    <style>
+      :host {
+        display: flex;
+        background-color: black;
+         width: 100%;
+        margin: 0px;
+        padding: 1px;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      img {
+        margin: 20px;
+        max-height: 600px;
+        transition: transform 0.4s;
+        border-radius: 45px;
+        height: 500px; 
+        width: 250px;
+        
+      }
+      .character-content {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        
+      }
+      .character {
+        
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        max-height: 600px;
+        transition: transform 0.4s;
+      }
+      .character:hover {
+        transform: scale(1.01);
+        transition: transform 0.4s;
+      }
+       
+      .character h1 {
+        margin: 2px;
+        transition: color 0.5s;
+        text-align: center;
+      }
+      .character:hover h1{
+        color: #A41D2F;
+        transition: color 0.4s;
+      }
+      
+      @media only screen and (max-width: 1550px) {
+      .character {
+        border-radius: 45px;
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        max-height: 600px;
+      }
+     
+     
+      }
+       @media only screen and (max-width: 380px) {
+        .character-content {
+          display: flex;
+        flex-direction: column;
+        }
+        .character{
+          max-height: 450px;
+          
+        }
+        img {
+          max-height: 400px;
+        }
+      }
+      
+    </style>
+    
+    <app-route 
+      route="{{route}}" 
+      pattern="/:character" 
+      data="{{routeData}}"></app-route>
+    
+    <iron-pages selected="[[routeData.character]]" attr-for-selected="name" fallback-selection="default">
+      <div name="default" class="character-content">
+      
+        <div class="character">
+          <a href="/weapons/sienna">
+            <img src$="[[importPath]]pose_pyromancer.jpg" alt"sienna weapons">
+            <h1>Sienna</h1>
+          </a>
+        </div>
+        
+        <div class="character">
+          <a href="/weapons/kerillian">
+            <img src$="[[importPath]]pose_handmaiden.jpg" alt"kerillian weapons" >
+            <h1>Kerillian</h1>
+          </a>
+        </div>
+        
+        <div class="character">
+          <a href="/weapons/victor">
+            <img src$="[[importPath]]pose_witch_hunter_captain.jpg" alt"victor weapons" >
+            <h1>Victor</h1>
+          </a>
+        </div>
+    
+        <div class="character">
+          <a href="/weapons/bardin">
+            <img  src$="[[importPath]]pose_hero_ranger_veteran.jpg" alt"bardin weapons" >
+            <h1 id="bardin">Bardin</h1>
+          </a>
+        </div>
+       
+        <div class="character">
+          <a href="/weapons/markus">
+            <img src$="[[importPath]]pose_mercenary.jpg" alt"markus weapons">
+            <h1>Markus</h1>
+          </a>
+        </div>
+      </div>
+      <victor-weapons name="victor" route=""></victor-weapons>
+      <sienna-weapons name="sienna"  route=""></sienna-weapons>
+      <markus-weapons name="markus" route=""></markus-weapons>
+      <kerillian-weapons name="kerillian" route=""></kerillian-weapons>
+      <bardin-weapons name="bardin" route=""></bardin-weapons>
+    </iron-pages>
+  </template>
+  <script>
+    class VerminWeapons extends Polymer.Element {
+      static get is() { return 'vermin-weapons'; }
+      static get properties() {
+        return {
+          route: Object,
+          routeData: Object
+        }
+      }
+      
+      static get observers() {
+        return [
+          'routeDataChanged(route)'
+        ];
+      }
+      
+      routeDataChanged() {
+        if(!this.route.path){
+          this.routeData = {};
+        }
+      }
+    }
+    
+    customElements.define(VerminWeapons.is, VerminWeapons);
+  </script>
+</dom-module>

@@ -1,0 +1,7 @@
+{
+  "name": "vermintide2-info",
+  "short_name": "vermintide2-info",
+  "description": "Vermintide 2 guide site",
+  "start_url": "/",
+  "display": "standalone"
+}
